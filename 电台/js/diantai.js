@@ -189,11 +189,18 @@ window.onload=function(){
 	    var staPaiHotChild=stationPaihangHot.children;
 	    for (var l = 0; l < staPaiHotChild.length; l++) {
 	    	staPaiHotChild[l].index=l;
+	    	staPaiHotChild[0].style.backgroundColor="#e1a003";
 	    	staPaiHotChild[l].onmouseover=function(){
+	    		for (var i = 0; i < staPaiHotChild.length; i++) {
+	    			staPaiHotChild[i].style.backgroundColor="";
+	    		};
 	    		var j=this.index;
 	    		staPaiHotChild[j].style.backgroundColor="#e1a003";
 	    	}
 	    	staPaiHotChild[l].onmouseout=function(){
+	    		for (var i = 0; i < staPaiHotChild.length; i++) {
+	    			staPaiHotChild[i].style.backgroundColor="";
+	    		};
 	    		var j=this.index;
 	    		staPaiHotChild[j].style.backgroundColor="#313333";
 	    	}
@@ -202,10 +209,30 @@ window.onload=function(){
 
 	    //创建电台排行榜图片
 	    var stationPaihangImg=document.getElementById('stationPaihangImg');
+	    var imgl=0;
+	    var img1l=0;
+	    var img2l=0;
 	    for (var i = 0; i < diantai_listPaihang.length; i++) {
 	    	var staPaihangImgA=document.createElement("a");
 	    	staPaihangImgA.className="staPaihangImgA";
 	    	staPaihangImgA.href="";
+	    	if(i<5){
+	    		staPaihangImgA.style.top="0px";
+	    		staPaihangImgA.style.left=imgl+"px";
+	    		imgl=imgl+172;
+	    	};
+	    	if(i>=5&&i<10) {
+	    		staPaihangImgA.style.top="252px";
+	    		staPaihangImgA.style.left=img1l+"px";
+	    		console.log(staPaihangImgA);
+	    		img1l=img1l+172;
+	    	};
+	    	if(i>=10&&i<15) {
+	    		staPaihangImgA.style.top="504px";
+	    		staPaihangImgA.style.left=img2l+"px";
+	    		console.log(staPaihangImgA);
+	    		img2l=img2l+172;
+	    	};
 
 	    	var staPaihangImg=document.createElement("div");
 	    	staPaihangImg.className="staPaihangImg";
@@ -298,7 +325,6 @@ window.onload=function(){
                         getA[a].children[0].style.backgroundColor="";
                         getA[a].children[0].style.color="";
                     }
-                    // console.log(ulChild[i+1].children[0]);
                     var XAA=--e
                     if (e<0) {
                         e=ulChild.length-1;
